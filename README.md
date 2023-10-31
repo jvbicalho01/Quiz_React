@@ -1,7 +1,7 @@
 # Integrantes
 
-Alexandre Ferreira Arigoni
-João Vítor Bicalho da Silva
+  * Alexandre Ferreira Arigoni
+  * João Vítor Bicalho da Silva
 
 # Explicação do Sistema
 
