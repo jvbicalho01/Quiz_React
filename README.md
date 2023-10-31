@@ -16,7 +16,7 @@ João Vítor Bicalho da Silva
 OBS: é necessário que tenha o "node" e o "npm" instalados em seu computador
 
 1. Clonar o repositório
-2. Entrar no diretório "gerenciador-financas"
+2. Entrar no diretório "Quiz_React", que foi gerado após a clonagem
 3. Executar o comando "npm install"
 4. Instalar bibliotecas utilizadas no projeto rodando os seguintes comandos:
   - "npm install styled-components"
