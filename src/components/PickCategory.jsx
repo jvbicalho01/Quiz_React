@@ -1,5 +1,5 @@
 import { useContext } from "react"
-import { QuizContext } from "../context/quiz"
+import { Context } from "../context/quiz"
 
 import Category from "../img/category.svg"
 
@@ -7,7 +7,7 @@ import "./PickCategory.css"
 
 const PickCategory = () => {
 
-  const [quizState, dispatch] = useContext(QuizContext);
+  const [quizState, dispatch] = useContext(Context);
 
   const chooseCategoryAndReorderQuestions = (category) => {
     dispatch({ type: "START_GAME", payload: category });

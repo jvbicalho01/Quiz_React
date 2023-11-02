@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
 
-import { QuizProvider } from './context/quiz.jsx'
+import { Provider } from './context/quiz.jsx'
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
-    <QuizProvider>
+    <Provider>
       <App />
-    </QuizProvider>
+    </Provider>
   </React.StrictMode>,
 )
