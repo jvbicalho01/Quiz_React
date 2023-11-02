@@ -16,102 +16,103 @@ const initialState = {
 
 const quizReducer = (state, action) => {
 
-  if (action.type === "CHANGE_STATE") {
-    return {
-      ...state,
-      gameStage: STAGES[1],
-    };
-  }
-  else if (action.type === "START_GAME") {
-    let quizQuestions = null;
+  switch (action.type) {
+    case "CHANGE_STATE":
+      return {
+        ...state,
+        gameStage: STAGES[1],
+      };
 
-    state.questions.forEach((question) => {
-      if (question.category === action.payload) {
-        quizQuestions = question.questions;
+    case "START_GAME":
+      let quizQuestions = null;
+
+      state.questions.forEach((question) => {
+        if (question.category === action.payload) {
+          quizQuestions = question.questions;
+        }
+      })
+
+      return {
+        ...state,
+        questions: quizQuestions,
+        gameStage: STAGES[2],
       }
-    })
 
-    return {
-      ...state,
-      questions: quizQuestions,
-      gameStage: STAGES[2],
-    };
-  }
-  else if (action.type === "REORDER_QUESTIONS") {
-    const reorderQuestions = state.questions.sort(() => {
-      return Math.random() - 0.5;
-    })
-    return {
-      ...state,
-      questions: reorderQuestions,
-    };
-  }
-  else if (action.type === "CHANGE_QUESTION") {
-    const nextQuestion = state.currentQuestion + 1;
-    let endGame = false;
+    case "REORDER_QUESTIONS":
+      const reorderQuestions = state.questions.sort(() => {
+        return Math.random() - 0.5;
+      })
+      return {
+        ...state,
+        questions: reorderQuestions,
+      };
 
-    if (!state.questions[nextQuestion]) {
-      endGame = true;
-    }
+    case "CHANGE_QUESTION":
+      const nextQuestion = state.currentQuestion + 1;
+      let endGame = false;
 
-    return {
-      ...state,
-      currentQuestion: nextQuestion,
-      gameStage: endGame ? STAGES[3] : state.gameStage,
-      answerSelected: false,
-      help: false,
-    };
-  }
-  else if (action.type === "NEW_GAME") {
-    return initialState;
-  }
-  else if (action.type === "CHECK_ANSWER") {
+      if (!state.questions[nextQuestion]) {
+        endGame = true;
+      }
 
-    if (state.answerSelected) {
+      return {
+        ...state,
+        currentQuestion: nextQuestion,
+        gameStage: endGame ? STAGES[3] : state.gameStage,
+        answerSelected: false,
+        help: false,
+      };
+
+    case "NEW_GAME":
+      return initialState;
+
+    case "CHECK_ANSWER":
+
+      if (state.answerSelected) {
+        return state;
+      }
+
+      const answer = action.payload.answer;
+      const option = action.payload.option;
+      let correctAnswer = 0;
+
+      if (answer === option) {
+        correctAnswer = 1;
+      }
+
+      return {
+        ...state,
+        score: state.score + correctAnswer,
+        answerSelected: option,
+      }
+
+    case "SHOW_TIP":
+      return {
+        ...state,
+        help: "tip",
+      }
+
+    case "REMOVE_OPTION":
+      const questionWithoutOption = state.questions[state.currentQuestion];
+
+      let repeat = true;
+      let optionToHide;
+
+      questionWithoutOption.options.forEach((option) => {
+        if (option !== questionWithoutOption.answer && repeat) {
+          optionToHide = option;
+          repeat = false;
+        }
+      });
+
+      return {
+        ...state,
+        optionToHide,
+        help: true,
+      }
+
+    default:
       return state;
-    }
-
-    const answer = action.payload.answer;
-    const option = action.payload.option;
-    let correctAnswer = 0;
-
-    if (answer === option) {
-      correctAnswer = 1;
-    }
-
-    return {
-      ...state,
-      score: state.score + correctAnswer,
-      answerSelected: option,
-    }
-  }
-  else if (action.type === "SHOW_TIP") {
-    return {
-      ...state,
-      help: "tip",
-    }
-  }
-  else if (action.type === "REMOVE_OPTION") {
-    const questionWithoutOption = state.questions[state.currentQuestion];
-
-    let repeat = true;
-    let optionToHide;
-
-    questionWithoutOption.options.forEach((option) => {
-      if (option !== questionWithoutOption.answer && repeat) {
-        optionToHide = option;
-        repeat = false;
-      }
-    });
-
-    return {
-      ...state,
-      optionToHide,
-      help: true,
-    };
-  }
-  else {
-    return state;
   }
 
 }
