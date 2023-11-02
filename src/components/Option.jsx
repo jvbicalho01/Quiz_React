@@ -1,11 +1,11 @@
 import { useContext } from "react"
-import { Context } from "../context/quiz"
+import { QuizContext } from "../context/quiz"
 
 import "./Option.css"
 
 const Option = ({ option, selectOption, answer, hide }) => {
 
-  const [quizState, dispatch] = useContext(Context);
+  const [quizState, dispatch] = useContext(QuizContext);
 
   return (
     <div

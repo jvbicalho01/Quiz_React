@@ -1,5 +1,5 @@
 import { useContext } from "react"
-import { Context } from "../context/quiz"
+import { QuizContext } from "../context/quiz"
 
 import WellDone from "../img/welldone.svg"
 
@@ -7,7 +7,7 @@ import "./GameOver.css"
 
 const GameOver = () => {
 
-  const [quizState, dispatch] = useContext(Context);
+  const [quizState, dispatch] = useContext(QuizContext);
 
   return (
     <div className="gameover">

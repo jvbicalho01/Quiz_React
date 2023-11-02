@@ -1,5 +1,5 @@
 import { useContext, useEffect } from 'react'
-import { Context } from './context/quiz'
+import { QuizContext } from './context/quiz'
 
 import Welcome from './components/Welcome'
 import Question from './components/Question'
@@ -10,7 +10,7 @@ import './App.css'
 
 function App() {
 
-  const [quizState, dispatch] = useContext(Context);
+  const [quizState, dispatch] = useContext(QuizContext);
 
   return (
     <div className='App'>

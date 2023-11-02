@@ -14,7 +14,7 @@ const initialState = {
   optionToHide: null,
 }
 
-const Reducer = (state, action) => {
+const quizReducer = (state, action) => {
 
   if (action.type === "CHANGE_STATE") {
     return {
@@ -116,11 +116,11 @@ const Reducer = (state, action) => {
 
 }
 
-export const Context = createContext();
+export const QuizContext = createContext();
 
-export const Provider = ({ children }) => {
+export const QuizProvider = ({ children }) => {
 
-  const value = useReducer(Reducer, initialState);
+  const value = useReducer(quizReducer, initialState);
 
-  return <Context.Provider value={value}>{children}</Context.Provider>
+  return <QuizContext.Provider value={value}>{children}</QuizContext.Provider>
 }

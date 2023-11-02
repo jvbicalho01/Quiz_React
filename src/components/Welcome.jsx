@@ -1,5 +1,5 @@
 import { useContext } from "react"
-import { Context } from "../context/quiz"
+import { QuizContext } from "../context/quiz"
 
 import Quiz from "../img/quiz.svg"
 
@@ -7,7 +7,7 @@ import "./Welcome.css"
 
 const Welcome = () => {
 
-  const [quizState, dispatch] = useContext(Context);
+  const [quizState, dispatch] = useContext(QuizContext);
 
   return (
     <div className='welcome'>
