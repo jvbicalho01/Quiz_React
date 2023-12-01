@@ -3,9 +3,9 @@ name: Node.js CI
 on: [push]
 
 jobs:
-  build:
+  ubuntu:
 
-    runs-on: [windows-latest, ubuntu-latest, macos-latest]
+    runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v4
@@ -15,3 +15,29 @@ jobs:
           node-version: '18.x'
       - run: npm install
       - run: npm test -- --watchAll=false
+
+  windows:
+
+    runs-on: windows-latest
+    
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+      - run: npm install
+      - run: npm test -- --watchAll=false
+
+  macos:
+
+    runs-on: macos-latest
+        
+    steps:
+      - uses: actions/checkout@v4
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+      - run: npm install
+      - run: npm test -- --watchAll=false  
