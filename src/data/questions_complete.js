@@ -32,7 +32,7 @@ const data = [
     ],
   },
   {
-    category: "Historia",
+    category: "História",
     questions: [
       {
         question: "Qual evento histórico aconteceu entre os anos de 1914 e 1918?",
@@ -134,6 +134,7 @@ const data = [
         question: "Na animação 'Procurando Nemo', qual é a espécie de peixe do Nemo?",
         options: ["Dourado-do-mar", "Peixe-palhaço", "Quatro-olhos", "Barracuda",],
         answer: "Peixe-palhaço",
+        tip: "Peixe laranja com listras brancas",
       },
       {
         question: "Quem pintou o quadro chamado 'Mona Lisa' (também conhecido como Gioconda)?",
