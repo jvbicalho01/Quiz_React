@@ -3,7 +3,7 @@ name: Node.js CI
 on: [push]
 
 jobs:
-  ubuntu:
+  unit-test-ubuntu:
 
     runs-on: ubuntu-latest
 
@@ -16,7 +16,7 @@ jobs:
       - run: npm install
       - run: npm test -- --watchAll=false
 
-  windows:
+  unit-test-windows:
 
     runs-on: windows-latest
     
@@ -29,7 +29,7 @@ jobs:
       - run: npm install
       - run: npm test -- --watchAll=false
 
-  macos:
+  unit-test-macos:
 
     runs-on: macos-latest
         
