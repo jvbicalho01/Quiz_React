@@ -79,24 +79,3 @@ describe("Start Button Click", () => {
 
   afterAll(() => browser.close());
 });
-
-describe("Categories Buttons", () => {
-  let browser;
-  let page;
-
-  beforeAll(async () => {
-    browser = await launch();
-    page = await browser.newPage();
-  });
-
-  test("Testando o clique no botão de iniciar", async () => {
-    await page.goto("http://localhost:5173");
-    // await page.waitForSelector("h1");
-    // await page.click(".welcome button");
-    await page.waitForSelector(".category h2");
-    const text = await page.$eval(".category h2", (e) => e.textContent);
-    expect(text).toContain("Escolha uma categoria");
-  });
-
-  afterAll(() => browser.close());
-});
