@@ -41,7 +41,3 @@ jobs:
           node-version: '18.x'
       - run: npm install
       - run: npm test -- --watchAll=false
-    
-  e2e-test-ubuntu:
-
-    runs-on: ubuntu-latest
