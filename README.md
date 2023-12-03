@@ -20,5 +20,6 @@ OBS: é necessário que tenha o "node" e o "npm" instalados em seu computador
 3. Executar o comando "npm install"
 4. Executar o comando "npm run dev" e abrir no navegador a porta localhost indicada no terminal (provavelmente "localhost:5173")
 5. Para executar os teste é só rodar o comando "npm test -- --watchAll=false" (se o sistema estiver rodando, é necessário abrir um novo terminal)
+6. Para executar os teste de sistema é só rodar o comando "npm run test:e2e -- --watchAll=false" (se o sistema estiver rodando, é necessário abrir um novo terminal)
 
   Em caso de execução do "Lizard", é necessario entrar na pasta "src" e nela rodar o comando "lizard"
