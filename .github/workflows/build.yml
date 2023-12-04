@@ -67,7 +67,7 @@ jobs:
         with:
           node-version: '18.x'
       - run: npm install
-      - run: npm run dev &
+      - run: npm run dev
       - run: npm run test:e2e -- --watchAll=false
 
   e2e-test-macos:
